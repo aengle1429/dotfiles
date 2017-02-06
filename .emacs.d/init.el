@@ -30,7 +30,7 @@
 (setq calendar-week-start-day 1); Calender should start on Monday
 (add-to-list 'default-frame-alist '(height . 59)); Default frame height.
 
-(linum-mode `t) ;line numbers, possibly laggy for larger files
+(linum-mode 't) ;line numbers, possibly laggy for larger files
 ; maybe uncomment? (exec-path-from-shell-initialize) ;maybe uncomment this
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
@@ -167,12 +167,58 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#839496")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes
+   (quote
+    ("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(exec-path
    (quote
     ("/Users/aengle/anaconda/bin" "/usr/local/cuda/bin" "/Library/Frameworks/Python.framework/Versions/3.5/bin" "/opt/local/bin" "/opt/local/sbin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/Library/TeX/texbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin" "/usr/local/smlnj/bin")))
+ '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#002b36" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#93a1a1")
+ '(highlight-tail-colors
+   (quote
+    (("#3C3D37" . 0)
+     ("#679A01" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#3C3D37" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#7B6000" "#8B2C02" "#990A1B" "#93115C" "#3F4D91" "#00629D" "#00736F" "#546E00")))
+ '(hl-fg-colors
+   (quote
+    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (color-theme-solarized auto-complete evil sml-mode auctex))))
+    (anaconda-mode monokai-theme solarized-theme zenburn-theme python-mode color-theme-solarized auto-complete evil sml-mode auctex)))
+ '(pos-tip-background-color "#A6E22E")
+ '(pos-tip-foreground-color "#272822")
+ '(py-python-command "/Users/engle/anaconda/bin/python")
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(term-default-bg-color "#002b36")
+ '(term-default-fg-color "#839496")
+ '(vc-annotate-background-mode nil)
+ '(weechat-color-list
+   (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
+ '(xterm-color-names
+   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
+ '(xterm-color-names-bright
+   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -190,18 +236,18 @@
 (blink-cursor-mode -1)
 (show-paren-mode 1)
 
-(require 'bar-cursor)
-(bar-cursor-mode t)
+; (require 'bar-cursor)
+; (bar-cursor-mode t)
 
 ; (add-to-list 'load-path "/home/aengle/local-lisp/utils")
 ; (require 'rect-mark)
 
-(global-set-key (kbd "M<up>") 'enlarge-window)
-(global-set-key (kbd "M<down>") 'shrink-window)
+(global-set-key (kbd "<M-up>") 'enlarge-window)
+(global-set-key (kbd "<M-down>") 'shrink-window)
 
 (global-set-key (kbd "<f8>") (lambda () (interactive) (message (buffer-filename))))
-(require 'markdown-modemap)
-(define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
+; (require 'markdown-modemap)
+; (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
 
 (add-hook 'markdown-mode-hook 'flyspell-mode)
-
+(scroll-bar-mode t)
