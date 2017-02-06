@@ -160,6 +160,8 @@
 	("renewlist" "{")
 	("setlistdepth" "{")
 	        ("restartlist" "{")))
+
+; ; these are set by M-x customize-variables!
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -180,3 +182,26 @@
 
 (require 'auto-complete-config)
 (ac-config-default)
+
+; move all of this to ~/.emacs.d/init.el, can version control that directory
+
+(setq visible-bell t)
+(tool-bar-mode -1)
+(blink-cursor-mode -1)
+(show-paren-mode 1)
+
+(require 'bar-cursor)
+(bar-cursor-mode t)
+
+; (add-to-list 'load-path "/home/aengle/local-lisp/utils")
+; (require 'rect-mark)
+
+(global-set-key (kbd "M<up>") 'enlarge-window)
+(global-set-key (kbd "M<down>") 'shrink-window)
+
+(global-set-key (kbd "<f8>") (lambda () (interactive) (message (buffer-filename))))
+(require 'markdown-modemap)
+(define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
+
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+
