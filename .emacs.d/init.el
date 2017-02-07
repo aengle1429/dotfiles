@@ -30,7 +30,7 @@
 (setq calendar-week-start-day 1); Calender should start on Monday
 (add-to-list 'default-frame-alist '(height . 59)); Default frame height.
 
-(linum-mode 't) ;line numbers, possibly laggy for larger files
+(global-linum-mode 't) ;line numbers, possibly laggy for larger files
 ; maybe uncomment? (exec-path-from-shell-initialize) ;maybe uncomment this
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
@@ -209,6 +209,8 @@
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(py-python-command "/Users/engle/anaconda/bin/python")
+ '(py-shell-local-path "/Users/engle/anaconda/bin/python")
+ '(py-use-local-default t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
