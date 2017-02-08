@@ -1,0 +1,146 @@
+
+% math abbreviations
+\newcommand{\tr}{\operatorname{tr}}
+
+ %BB
+\newcommand{\bB}{\mathbb{B}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bW}{\mathbb{W}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\R}{\bR}
+\newcommand{\Rn}{\bR^n}
+\newcommand{\Rm}{\bR^m}
+\newcommand{\Rk}{\bR^k}
+\newcommand{\Rmn}{\bR^{m\times n}}
+\newcommand{\Rnn}{\bR^{n\times n}}
+\newcommand{\bRn}{\bR^n}
+\newcommand{\eR}{{\overline\bR}}
+
+%CAL
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\hcQ}{{\widehat \cQ}}
+\newcommand{\cD}{{\mathcal{D}}}
+\newcommand{\cF}{{\mathcal{F}}}
+\newcommand{\cE}{{\mathcal{E}}}
+\newcommand{\cK}{{\mathcal{K}}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cWo}{\mathcal{W}_0}
+\newcommand{\cV}{{\mathcal{V}}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+
+%OTHER
+\newcommand{\duball}{\uball^\circ}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\one}{\mathbf{1}}
+
+% Math symbol environment
+% use declaremathoperator for spacings and star 
+% for limits typset beneath them...
+
+
+% first, without arguments
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\bdry}{bdry}
+\DeclareMathOperator{\core}{core}
+
+% with arguments
+\newcommand{\ip}[2]{\left\langle #1,\, #2\right\rangle}
+\newcommand{\map}[3]{#1:\, #2\rightarrow #3}
+\newcommand{\mmap}[3]{#1:\, #2\Rightarrow #3}
+\newcommand{\dom}[1]{\mathrm{dom}\left(#1\right)}
+\newcommand{\cl}[1]{\mathrm{cl}\left(#1\right)}
+\newcommand{\supp}[1]{\mathrm{supp}(#1)}
+\newcommand{\dist}[2]{\mbox{dist}\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\odist}[2]{\mbox{dist}_1\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\tdist}[2]{\mbox{dist}_2\left(#1\,\left|\, #2\right.\right)}
+
+% linear algebra
+\newcommand{\ran}[1]{\mathrm{Ran}\left(#1\right)}
+
+% Convex analysis
+\newcommand{\ccvx}[1]{\overline{\mathrm{conv}}\left(#1\right)}
+\newcommand{\conv}{{\mbox{conv}\,}}
+\newcommand{\support}[2]{\delta^*\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\indicator}[2]{\delta\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\ncone}[2]{N\left(#1\, |\, #2\right)}
+\newcommand{\tcone}[2]{T\left(#1\, |\, #2\right)}
+\newcommand{\lev}{\mathrm{lev}}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\gauge}[2]{\gamma\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\cone}[1]{\mathrm{cone}\left(#1\right)}
+\newcommand{\interior}[1]{\mathrm{int}\left(#1\right)}
+\newcommand{\ri}[1]{\mathrm{ri}\left(#1\right)}
+\newcommand{\rec}{\mathrm{rec}}
+\newcommand{\aff}{\mathrm{aff}}
+\newcommand{\gph}{\mathrm{gph}}
+
+% Variational Analysis
+\newcommand{\sd}{\partial}
+\newcommand{\hsd}{{\hat\partial}}
+
+%%%Greek letter abbreviations
+\newcommand{\gam}{\gamma}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\bgam}{{\bar \gam}}
+\newcommand{\hgam}{{\hat \gam}}
+\newcommand{\lam}{\lambda}
+\newcommand{\blam}{{\bar\lam}}
+\newcommand{\hlam}{{\hat\lam}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\sig}{\sigma}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\alf}{\alpha}
+\newcommand{\vp}{\varphi}
+\newcommand{\btau}{\bar\tau}
+
+
+% bar and tilde variables
+\newcommand{\ba}{\bar a}
+\newcommand{\barA}{\bar A}
+\newcommand{\bb}{\bar b}
+\newcommand{\bd}{{\bar d}}
+\newcommand{\by}{\bar y}
+\newcommand{\bp}{\bar p}
+\newcommand{\br}{\bar r}
+\newcommand{\bz}{\bar z}
+\newcommand{\bx}{\bar x}
+\newcommand{\bt}{\bar t}
+\newcommand{\bu}{\bar u}
+\newcommand{\bv}{\bar v}
+\newcommand{\bbR}{\bar\bR}
+\newcommand{\tsig}{\tilde\sigma}
+\newcommand{\bA}{{\bar A}}
+\newcommand{\bdel}{{\bar\del}}
+\newcommand{\bmu}{{\bar\mu}}
+
+% hat variables
+\newcommand{\hx}{{\hat x}}
+\newcommand{\ha}{{\hat a}}
+\newcommand{\hf}{{\hat f}}
+\newcommand{\hA}{{\hat A}}
+\newcommand{\hv}{{\hat v}}
+\newcommand{\hu}{{\hat u}}
+\newcommand{\hy}{{\hat y}}
+\newcommand{\hM}{{\widehat M}}
+
+% starred variables
+\newcommand{\stc}{{c^*}}
+\newcommand{\stDel}{{\Del^*}}
