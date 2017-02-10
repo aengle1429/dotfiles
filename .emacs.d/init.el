@@ -30,7 +30,7 @@
 (setq calendar-week-start-day 1); Calender should start on Monday
 (add-to-list 'default-frame-alist '(height . 59)); Default frame height.
 
-(global-linum-mode 't) ;line numbers, possibly laggy for larger files
+(linum-mode 't) ;line numbers, possibly laggy for larger files
 ; maybe uncomment? (exec-path-from-shell-initialize) ;maybe uncomment this
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
@@ -209,8 +209,6 @@
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(py-python-command "/Users/engle/anaconda/bin/python")
- '(py-shell-local-path "/Users/engle/anaconda/bin/python")
- '(py-use-local-default t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
@@ -253,3 +251,38 @@
 
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 (scroll-bar-mode t)
+
+;; everything here is from
+;; http://stackoverflow.com/questions/7899845/emacs-synctex-skim-how-to-correctly-set-up-syncronization-none-of-the-exi
+(setq
+ ;; Set the list of viewers for Mac OS X.
+ TeX-view-program-list
+ '(("Preview.app" "open -a Preview.app %o")
+   ("Skim" "open -a Skim.app %o")
+   ("displayline" "displayline %n %o %b")
+   ("open" "open %o"))
+ ;; Select the viewers for each file type.
+ TeX-view-program-selection
+ '((output-dvi "open")
+   (output-pdf "Skim")
+   (output-html "open")))
+
+;; above is from http://tex.stackexchange.com/questions/180637/my-pdf-is-not-shown-in-skim-unless-the-application-is-already-running
+
+;; make latexmk available via C-c C-c
+;; Note: SyncTeX is setup via ~/.latexmkrc (see below)
+(add-hook 'LaTeX-mode-hook (lambda ()
+  (push
+    '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
+      :help "Run latexmk on file")
+    TeX-command-list)))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+
+;; use Skim as default pdf viewer
+;; Skim's displayline is used for forward search (from .tex to .pdf)
+;; option -b highlights the current line; option -g opens Skim in the background  
+(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+(setq TeX-view-program-list
+     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+(server-start); start emacs in server mode so that skim can talk to it
