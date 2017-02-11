@@ -8,6 +8,8 @@
 
 (require 'evil)
 (evil-mode 1)
+(define-key evil-normal-state-map (kbd ";") 'evil-ex)
+(define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
 
 (setenv "PATH"
 	(concat
@@ -15,11 +17,11 @@
 	 "/usr/local/bin" ":"
 	 (getenv "PATH")
 	 )
-	)
-   (setq exec-path (append exec-path '("/usr/local/bin")))
+)
+(setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (setq c-default-style "linux"
           c-basic-offset 4); c stuff
-(setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
 (global-visual-line-mode 1); Proper line wrapping
 (global-hl-line-mode 0); Highlight current row
 (show-paren-mode 1); Matches parentheses and such in every mode
@@ -29,15 +31,37 @@
 (setq visible-bell t); THIS IS BUGGED Flashes on error
 (setq calendar-week-start-day 1); Calender should start on Monday
 (add-to-list 'default-frame-alist '(height . 59)); Default frame height.
-
-(linum-mode 't) ;line numbers, possibly laggy for larger files
+(global-linum-mode 't) ;line numbers, possibly laggy for larger files
 ; maybe uncomment? (exec-path-from-shell-initialize) ;maybe uncomment this
-(define-key evil-normal-state-map (kbd ";") 'evil-ex)
-(define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
+
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
+(require 'auto-complete-config)
+(ac-config-default)
+
+(setq visible-bell t)
+(tool-bar-mode -1)
+(blink-cursor-mode -1)
+(show-paren-mode 1)
+
+; (add-to-list 'load-path "/home/aengle/local-lisp/utils")
+; (require 'rect-mark)
+
+(global-set-key (kbd "<M-up>") 'enlarge-window)
+(global-set-key (kbd "<M-down>") 'shrink-window)
+
+(global-set-key (kbd "<f8>") (lambda () (interactive) (message (buffer-filename))))
+; (require 'markdown-modemap)
+; (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
+
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+(scroll-bar-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;BEGIN LATEX/AUCTEX/REFTEX STUFF;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; AUCTeX
 ;; Customary Customization, p. 1 and 16 in the manual, and http://www.emacswiki.org/emacs/AUCTeX#toc2
 (setq TeX-parse-self t); Enable parse on load.
@@ -175,7 +199,7 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
+    ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(exec-path
    (quote
     ("/Users/aengle/anaconda/bin" "/usr/local/cuda/bin" "/Library/Frameworks/Python.framework/Versions/3.5/bin" "/opt/local/bin" "/opt/local/sbin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/Library/TeX/texbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin" "/usr/local/smlnj/bin")))
@@ -205,7 +229,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (anaconda-mode monokai-theme solarized-theme zenburn-theme python-mode color-theme-solarized auto-complete evil sml-mode auctex)))
+    (material-theme anaconda-mode monokai-theme solarized-theme zenburn-theme python-mode color-theme-solarized auto-complete evil sml-mode auctex)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(py-python-command "/Users/engle/anaconda/bin/python")
@@ -225,32 +249,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(require 'auto-complete-config)
-(ac-config-default)
-
-; move all of this to ~/.emacs.d/init.el, can version control that directory
-
-(setq visible-bell t)
-(tool-bar-mode -1)
-(blink-cursor-mode -1)
-(show-paren-mode 1)
-
-; (require 'bar-cursor)
-; (bar-cursor-mode t)
-
-; (add-to-list 'load-path "/home/aengle/local-lisp/utils")
-; (require 'rect-mark)
-
-(global-set-key (kbd "<M-up>") 'enlarge-window)
-(global-set-key (kbd "<M-down>") 'shrink-window)
-
-(global-set-key (kbd "<f8>") (lambda () (interactive) (message (buffer-filename))))
-; (require 'markdown-modemap)
-; (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
-
-(add-hook 'markdown-mode-hook 'flyspell-mode)
-(scroll-bar-mode t)
 
 ;; everything here is from
 ;; http://stackoverflow.com/questions/7899845/emacs-synctex-skim-how-to-correctly-set-up-syncronization-none-of-the-exi
