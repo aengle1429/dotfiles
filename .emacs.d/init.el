@@ -6,10 +6,55 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
+(load "~/.emacs.d/auctex-config.el")
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(better-defaults
+    elpy ; python.el + elpy
+    ein ; ipython notebook
+    py-autopep8 ; conform to pep8
+    flycheck
+    material-theme))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      myPackages)
+;;; end packages
+
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
 (require 'evil)
 (evil-mode 1)
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
 (define-key evil-normal-state-map (kbd ":") 'evil-ex) ;swap : and ; for RSI
+
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require 'ido)
+(ido-mode t)
+
+(load-theme 'material t)
+
+(setq inhibit-splash-screen t); Disable splash screen
+(setq visible-bell t); THIS IS BUGGED Flashes on error
+(setq calendar-week-start-day 1); Calender should start on Monday
+(setq visible-bell t)
+
+(global-visual-line-mode 1); Proper line wrapping
+(global-hl-line-mode 0); Highlight current row
+(set-fringe-mode '(0 . 0)); Disable fringe because I use visual-line-mode
+(tool-bar-mode nil)
+(blink-cursor-mode -1) ; 1 vs anything is t or nil
+(show-paren-mode 1)
+(global-linum-mode t) ;line numbers, possibly laggy for larger files
+(column-number-mode t)
+(scroll-bar-mode nil) ; disable scroll bar
 
 (setenv "PATH"
 	(concat
@@ -19,32 +64,15 @@
 	 )
 )
 (setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
+
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (setq c-default-style "linux"
           c-basic-offset 4); c stuff
-(global-visual-line-mode 1); Proper line wrapping
-(global-hl-line-mode 0); Highlight current row
-(show-paren-mode 1); Matches parentheses and such in every mode
-(set-fringe-mode '(0 . 0)); Disable fringe because I use visual-line-mode
-(set-face-background hl-line-face "#f2f1f0"); Same color as greyness in gtk
-(setq inhibit-splash-screen t); Disable splash screen
-(setq visible-bell t); THIS IS BUGGED Flashes on error
-(setq calendar-week-start-day 1); Calender should start on Monday
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 (add-to-list 'default-frame-alist '(height . 59)); Default frame height.
-(global-linum-mode 't) ;line numbers, possibly laggy for larger files
 ; maybe uncomment? (exec-path-from-shell-initialize) ;maybe uncomment this
 
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-(require 'auto-complete-config)
-(ac-config-default)
-
-(setq visible-bell t)
-(tool-bar-mode -1)
-(blink-cursor-mode -1)
-(show-paren-mode 1)
 
 ; (add-to-list 'load-path "/home/aengle/local-lisp/utils")
 ; (require 'rect-mark)
@@ -57,8 +85,14 @@
 ; (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
 
 (add-hook 'markdown-mode-hook 'flyspell-mode)
-(scroll-bar-mode t)
 
+
+(elpy-enable)
+(elpy-use-ipython)
+;; use flycheck not flymake with elpy
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;BEGIN LATEX/AUCTEX/REFTEX STUFF;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -191,12 +225,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
@@ -226,13 +261,13 @@
  '(hl-fg-colors
    (quote
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
+ '(hl-sexp-background-color "#1c1f26")
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (material-theme anaconda-mode monokai-theme solarized-theme zenburn-theme python-mode color-theme-solarized auto-complete evil sml-mode auctex)))
+    (elpy material-theme anaconda-mode monokai-theme solarized-theme zenburn-theme color-theme-solarized auto-complete evil sml-mode auctex)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
- '(py-python-command "/Users/engle/anaconda/bin/python")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
@@ -250,37 +285,3 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; everything here is from
-;; http://stackoverflow.com/questions/7899845/emacs-synctex-skim-how-to-correctly-set-up-syncronization-none-of-the-exi
-(setq
- ;; Set the list of viewers for Mac OS X.
- TeX-view-program-list
- '(("Preview.app" "open -a Preview.app %o")
-   ("Skim" "open -a Skim.app %o")
-   ("displayline" "displayline %n %o %b")
-   ("open" "open %o"))
- ;; Select the viewers for each file type.
- TeX-view-program-selection
- '((output-dvi "open")
-   (output-pdf "Skim")
-   (output-html "open")))
-
-;; above is from http://tex.stackexchange.com/questions/180637/my-pdf-is-not-shown-in-skim-unless-the-application-is-already-running
-
-;; make latexmk available via C-c C-c
-;; Note: SyncTeX is setup via ~/.latexmkrc (see below)
-(add-hook 'LaTeX-mode-hook (lambda ()
-  (push
-    '("latexmk" "latexmk -pdf %s" TeX-run-TeX nil t
-      :help "Run latexmk on file")
-    TeX-command-list)))
-(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
-
-;; use Skim as default pdf viewer
-;; Skim's displayline is used for forward search (from .tex to .pdf)
-;; option -b highlights the current line; option -g opens Skim in the background  
-(setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
-(setq TeX-view-program-list
-     '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
-
-(server-start); start emacs in server mode so that skim can talk to it
