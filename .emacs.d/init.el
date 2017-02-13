@@ -56,6 +56,11 @@
 (column-number-mode t)
 (scroll-bar-mode nil) ; disable scroll bar
 
+
+; the difference between path and exec-path is discussed here:
+; http://ergoemacs.org/emacs/emacs_env_var_paths.html 
+; why is customize-variable not working though?
+
 (setenv "PATH"
 	(concat
 	 "/usr/texbin" ":"
@@ -63,9 +68,10 @@
 	 (getenv "PATH")
 	 )
 )
-(setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
 
+(setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/Users/engle/anaconda/bin"))) ; changing code in customize variable below doesn't fix this.
 (setq c-default-style "linux"
           c-basic-offset 4); c stuff
 (setq mac-command-modifier 'meta)
@@ -235,9 +241,9 @@
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "9d91458c4ad7c74cf946bd97ad085c0f6a40c370ac0a1cbeb2e3879f15b40553" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
- '(exec-path
+ '(exec-path ; is any of this working?...
    (quote
-    ("/Users/aengle/anaconda/bin" "/usr/local/cuda/bin" "/Library/Frameworks/Python.framework/Versions/3.5/bin" "/opt/local/bin" "/opt/local/sbin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/Library/TeX/texbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin" "/usr/local/smlnj/bin")))
+    ("/Users/engle/anaconda/bin" "/usr/local/cuda/bin" "/Library/Frameworks/Python.framework/Versions/3.5/bin" "/opt/local/bin" "/opt/local/sbin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/Library/TeX/texbin" "/Applications/Emacs.app/Contents/MacOS/bin-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec-x86_64-10_9" "/Applications/Emacs.app/Contents/MacOS/libexec" "/Applications/Emacs.app/Contents/MacOS/bin" "/usr/local/bin" "/usr/local/smlnj/bin")))
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-symbol-colors
    (--map
