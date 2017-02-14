@@ -54,8 +54,8 @@
 (show-paren-mode 1)
 (global-linum-mode t) ;line numbers, possibly laggy for larger files
 (column-number-mode t)
-(scroll-bar-mode nil) ; disable scroll bar
-
+(scroll-bar-mode 0) ; disable scroll bar
+(windmove-default-keybindings)
 
 ; the difference between path and exec-path is discussed here:
 ; http://ergoemacs.org/emacs/emacs_env_var_paths.html 
@@ -71,7 +71,7 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/library/TeX/texbin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(setq exec-path (append exec-path '("/Users/engle/anaconda/bin"))) ; changing code in customize variable below doesn't fix this.
+(setq exec-path (append exec-path '("/Users/aengle/anaconda/bin"))) ; changing code in customize variable below doesn't fix this.
 (setq c-default-style "linux"
           c-basic-offset 4); c stuff
 (setq mac-command-modifier 'meta)
