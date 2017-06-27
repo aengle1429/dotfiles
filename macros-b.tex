@@ -1,5 +1,15 @@
 
 % math abbreviations
+\newcommand{\minimize}{\mathop{\mathrm{minimize}\,}}
+
+%\[
+%	\begin{aligned}
+%		& & &\text{minimize} & & f_0(x) \\ 
+%		& & &\text{subject to} & & f_i(x) \leq 0 & & i=1,2,\dotsc,s \\
+%		& & & & & f_i(x) = 0 & & i = s+1,\dotsc,m	
+%	\end{aligned}
+%\]
+
 \DeclareMathOperator{\tr}{tr}
 \renewcommand{\bar}{\overline}
 \renewcommand{\hat}{\widehat}
@@ -59,10 +69,12 @@
 \DeclareMathOperator{\epi}{epi}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
+%\DeclareMathOperator*{\eargmin}{\epsilon-arg\,min}
 \DeclareMathOperator{\intr}{int}
 \DeclareMathOperator{\bdry}{bdry}
 \DeclareMathOperator{\core}{core}
 \DeclareMathOperator{\cl}{cl}
+\newcommand{\eargmin}[1]{\epsilon-\argmin#1}
 
 % with arguments
 \newcommand{\ip}[2]{\left\langle #1,\, #2\right\rangle}
@@ -80,7 +92,7 @@
 % Convex analysis
 \newcommand{\ccvx}[1]{\overline{\mathrm{conv}}\left(#1\right)}
 \DeclareMathOperator{\conv}{conv}
-\newcommand{\support}[2]{\delta^*\left(#1\,\left|\, #2\right.\right)}
+\newcommand{\support}[2]{\delta^\star\left(#1\,\left|\, #2\right.\right)}
 \newcommand{\indicator}[2]{\delta\left(#1\,\left|\, #2\right.\right)}
 \newcommand{\ncone}[2]{N\left(#1\, |\, #2\right)}
 \newcommand{\tcone}[2]{T\left(#1\, |\, #2\right)}
@@ -96,6 +108,7 @@
 % Variational Analysis
 \newcommand{\sd}{\partial}
 \newcommand{\hsd}{{\hat\partial}}
+\DeclareMathOperator{\elim}{e-lim}
 
 %%%Greek letter abbreviations
 \newcommand{\gam}{\gamma}
