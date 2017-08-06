@@ -1,3 +1,8 @@
+"
+"From practical vim:
+scriptencoding utf-8
+set encoding=utf-8
+set wildmode=longest,list
 "{{{Misc Settings
 "
 "" Necesary  for lots of cool vim things
@@ -17,18 +22,18 @@ set mouse
 " i like these colors
 colorscheme desert
 " tab spacing
-set shiftwidth=4
+" set tabstop=4  " show existing tab with 4 spaces width
+set shiftwidth=4 " when indentifying with '>', use 4 space width
 set softtabstop=4
 " spaces over tab chars, messes me up in Sublimetext
 set smarttab
-set expandtab
+set expandtab " on pressing tab, insert 4 spaces
 " This is totally awesome - remap jj to escape in insert mode.  You'll never
 " type jj anyway, so it's great!
 inoremap jj <Esc>
 " think about these below. they help with pasting code from somewhere.
 " set paste
 " set pastetoggle=<F4>
-" Incremental searching is sexy
 set incsearch
 "
 " Highlight things that we find with the search
