@@ -1,6 +1,7 @@
 "
 "From practical vim:
 scriptencoding utf-8
+set history=200 " set vim to record last 20 ex commands
 set encoding=utf-8
 set wildmode=longest,list
 "{{{Misc Settings
