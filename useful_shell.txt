@@ -1,3 +1,4 @@
+1.
 $_ or !$ recall last argument from previous command (these are just vim)
 !^ first argument (after script/program) from previous command
 !! (previous command, think yelling)
@@ -5,3 +6,5 @@ $_ or !$ recall last argument from previous command (these are just vim)
 e.g. ls a.txt b.txt
 !:1 gives first argument
 !:1-2 gives both arguments
+
+du -sh /usr # human readable, summarized disk usage for the folder /usr. May have to run as super
