@@ -8,3 +8,6 @@ e.g. ls a.txt b.txt
 !:1-2 gives both arguments
 
 du -sh /usr # human readable, summarized disk usage for the folder /usr. May have to run as super
+
+sed -i '1s/^/my_line_of_text\n/' myfile # inserts my_line_of_text\n as the first line of myfile, can add a $variable in the line by using " instead of '
+
