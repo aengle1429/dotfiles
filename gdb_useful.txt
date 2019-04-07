@@ -1,0 +1,2 @@
+continue tries to execute code completely
+step does the next machine or source code instruction, possibly stopping at a breakpoint

@@ -1,0 +1,16 @@
+target: sources
+<TAB> command
+
+linking depends on .o's
+compiling creates a .o that depends on the .c and all included files
+Therefore if one .c changes, just need to recreate the .o file and relink
+if a header changes, may need to rebuild more
+
+Running make with no target given on the command line uses the first target in the file.
+
+The algorithm is:
+    For each source, if it is a target in the Makefile, then process recursively
+    Then
+        If some source does not exist, error
+        If some source is newer than the target, (or target DNE)
+        run shell command.
