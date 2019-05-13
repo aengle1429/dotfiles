@@ -1,6 +1,9 @@
 set bs=2
 
-" Stuff for nvim-R
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+"this clears, redraws screen, and mutes search highlighting until new or repeated search command
+
+" Nvim-R
 let R_assign = 0
 let R_console_width=1000 " used so the R console is split horizontally
 let g:rout_follow_colorscheme = 1
