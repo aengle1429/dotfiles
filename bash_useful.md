@@ -1,18 +1,25 @@
-echo 1 + 1
+`echo 1 + 1` `echo $((1 + 1))`
 
-Redirection:
-    stdout to file
-        ls -l > ls.txt
-    stderr to file
-        wc -l notfile 2> wc.err
-    stdout to stderr
-        ls -l 1>&2 ls.txt
-    stderr to stdout
-        ls -l 2>&1 ls.txt
-    stderr and stdout to file
-        ls -l &> myfile
+##Redirection:
 
-Logic:
+* stdout to file
+
+    `ls -l > ls.txt`
+* stderr to file
+    
+    `wc -l notfile 2> wc.err`
+* stdout to stderr
+    
+    `ls -l 1>&2 ls.txt`
+* stderr to stdout
+    
+    `ls -l 2>&1 ls.txt`
+
+* stderr and stdout to file
+    `ls -l &> myfile`
+
+##Control Flow:
+```bash
 if [[ expr ]]
 then
     echo hi
@@ -22,18 +29,20 @@ then
 else
     echo bye
 fi
+```
 
-`seq 1 100` instead of {1..100} ? No commas.
 
-* globs to files and directories ALWAYS
+`seq 1 100` instead of `{1..100}` Note there are no commas
 
-REMEMBER: 0 is TRUE and 1 is FALSE (think return 0;)
+`*` globs to files and directories ALWAYS
 
--f if FILE exists and is a regular file
--a if FILE exists
--d if FILE exists and is a directory
+Remember: `0` is `TRUE` (think `return 0;`)
 
-chmod:
+`-f` if FILE exists and is a regular file
+`-a` if FILE exists
+`-d` if FILE exists and is a directory
+
+####chmod:
     _ _ _
     bit1 bit2 bit3 READ WRITE EXECUTE
     4 2 1
@@ -58,19 +67,24 @@ Silently conver integers to 0 if need be
 
 $PS1 is the thing before the $ on the input line of terminal.
 
+```bash
 $ test 1 -lt 2
 # 0 succeeds if command is true
 $ test 2 -lt 1
 # 1 not a success
+```
 
-$@ - all words on commandline -- THIS will correctly deal with spaces for iteration: args 1 2 '3 4' gets treated as 3 whereas
+* `$@` - all words on commandline -- THIS will correctly deal with spaces for iteration: args 1 2 '3 4' gets treated as 3 whereas
     if we tried doing 1 2 '3 4' into $* we would get 4 arguments.
-$? exitcode
-$# - num_args (does not include file name)
-$0 <- file name
-$i <- ith arg
-$* <- all args
-* <- all files in current directory
+* `$?` exitcode
+* `$#` num_args (does not include file name)
+* `$0` file name
+* `$i` ith arg
+* `$*` all args
+* `*` all files in current directory
+* `!$` uses the input args of the previous command, e.g. `mkdir asdf` then `cd !$`
+* `!!` does the previous command
+* `$_` holds arg of previous command
 
 Cannot get values from subshell
 
@@ -79,10 +93,6 @@ $ echo ${x}yz
 $ echo $x+$y
 $ ((n=$x+$y)) # no spacing needed
 
-!$ uses the input args of the previous command, e.g. mkdir asdf then cd !$
-!! does the previous command
-
-What about $_ holds arg of previous command
 
 Best practice is to "${MYVAR}" I think
 
