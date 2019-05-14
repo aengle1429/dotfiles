@@ -88,39 +88,50 @@ $ test 2 -lt 1
 
 Cannot get values from subshell
 
-$ echo $xyz
-$ echo ${x}yz
-$ echo $x+$y
-$ ((n=$x+$y)) # no spacing needed
+```bash
+echo $xyz
+echo ${x}yz
+echo $x+$y
+((n=$x+$y)) # no spacing needed
+```
 
+Best practice is to `"${MYVAR}"`
 
-Best practice is to "${MYVAR}" I think
+`echo "* x"` will not do shell substition of `*`.
 
-echo "* x" will not do shell substition of *.
-echo "!a" will not suppress the !
+`echo "!a"` will not suppress the `!`
 
--eq for equality! -e is different
-stdin is anonymous! wc -c < a.out will not print the filename
+`-eq` for equality, `-e` is different
 
-brace expansion:
-    useful for copying
-    cp /a/really/long/path/file.txt{,.bak}
+stdin is anonymous: `wc -c < a.out` will not print the filename
+
+##brace expansion:
+useful for copying
+
+`cp /a/really/long/path/file.txt{,.bak}`
     causes file.txt to get copied to file.txt.bak
 
-    useful for downloading
-    wget http://domain.com/book/page{1..5}.html
+useful for downloading
 
-    for i in {1..100}
-    do
-        # something
-    done
+```bash
+wget http://domain.com/book/page{1..5}.html
 
-shell globbing:
-    */*.txt expands to all files in subdirectories ending in txt
-    does not match dir1/file.txt.1
-    also does not match anything in the current directory.
-    ? is a one character wildcard
-    e.g., ls t?.c will list t2.sh
-    e.g., ls -l [a-c]* lists a.1 b.1 and c.1
-    e.g., ls -l {b*,c*,*est*} lists b.1 c.1 and test1.txt
-    see: http://tldp.org/LDP/abs/html/globbingref.html
+for i in {1..100}
+do
+    # something
+done
+```
+
+##shell globbing:
+`*/*.txt` expands to all files in subdirectories ending in txt
+
+does not match dir1/file.txt.1, also does not match anything in the current directory.
+
+`?` is a one character wildcard
+e.g., `ls t?.c` will list t2.sh
+
+e.g., `ls -l [a-c]*` lists a.1 b.1 and c.1
+
+e.g., `ls -l {b*,c*,*est*}` lists b.1 c.1 and test1.txt
+
+see: http://tldp.org/LDP/abs/html/globbingref.html
