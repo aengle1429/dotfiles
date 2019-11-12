@@ -63,12 +63,9 @@ set nocompatible
 "" Show (partial) command in status line.
 set showcmd
 "
-" Folding Stuffs
 set foldmethod=marker
 syntax on
-" line numbers
 set number
-" mouse support
 set mouse
 colorscheme desert
 " tab spacing
@@ -78,14 +75,7 @@ set softtabstop=4
 " spaces over tab chars, messes me up in Sublimetext
 set smarttab
 set expandtab " on pressing tab, insert 4 spaces
-" This is totally awesome - remap jj to escape in insert mode.  You'll never
-" type jj anyway, so it's great!
-inoremap jj <Esc>
-" think about these below. they help with pasting code from somewhere.
-" set paste
-" set pastetoggle=<F4>
-"
-" Highlight things that we find with the search
+
 set incsearch
 set hlsearch
 set ruler                     " show the line number on the bar
