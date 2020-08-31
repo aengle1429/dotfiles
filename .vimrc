@@ -60,7 +60,8 @@ set wildmode=longest,list
 set nocompatible "" Necesary  for lots of cool vim things
 set showcmd "" Show (partial) command in status line.
 set foldmethod=marker
-set number
+set rnu  " set relative numbering
+set number " the combination of number, rnu means the current line is not 0
 set mouse
 set shiftwidth=4 " when indentifying with '>', use 4 space width
 set softtabstop=4
