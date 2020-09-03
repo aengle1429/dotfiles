@@ -1,7 +1,6 @@
 """"""Pugins
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 " shorthand notation is to just write 'jalvesaq/Nvim-R'
-Plug 'https://github.com/jalvesaq/Nvim-R'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot' " Better Syntax Support
@@ -10,7 +9,9 @@ Plug 'jiangmiao/auto-pairs' " Auto pairs for '(' '[' '{'
 Plug 'vim-airline/vim-airline'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'liuchengxu/vim-which-key'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'https://github.com/jalvesaq/Nvim-R'
 call plug#end()
 " Nvim-R
 let R_assign = 0
@@ -43,6 +44,34 @@ vnoremap > >gv
 " Make cursor move as expected with wrapped lines:
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+" Terminal Mode in NeoVim
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <M-[> <Esc>
+  tnoremap <C-v><Esc> <Esc>
+  " Terminal mode:
+  tnoremap <C-h> <c-\><C-n><C-w>h
+  tnoremap <C-j> <c-\><C-n><C-w>j
+  tnoremap <C-k> <c-\><C-n><C-w>k
+  tnoremap <C-l> <c-\><C-n><C-w>l
+  " Insert mode:
+  inoremap <C-h> <Esc><C-w>h
+  inoremap <C-j> <Esc><C-w>j
+  inoremap <C-k> <Esc><C-w>k
+  inoremap <C-l> <Esc><C-w>l
+  " Visual mode:
+  vnoremap <C-h> <Esc><C-w>h
+  vnoremap <C-j> <Esc><C-w>j
+  vnoremap <C-k> <Esc><C-w>k
+  vnoremap <C-l> <Esc><C-w>l
+  " Normal mode:
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+  " Paste
+  tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+endif
 
 colorscheme desert
 syntax on
@@ -78,3 +107,4 @@ set ignorecase          " Do case insensitive matching
 set smartcase           " Do smart case matching
 set incsearch           " Incremental search
 set hidden              " Hide buffers when they are abandoned
+
