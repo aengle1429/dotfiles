@@ -16,15 +16,17 @@ Plug 'morhetz/gruvbox'  " colorscheme
 " Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 " Plug 'rbgrouleff/bclose.vim'
 call plug#end()
-" Slime
+source $HOME/.config/nvim/plug-config/coc.vim
+""" Slime
 let g:slime_target = "tmux"
-" Airline
+let g:slime_python_ipython = 1
+""" Airline
 let g:airline#extensions#tabline#enabled = 1
 set noshowmode  " -- INSERT -- is redundant with airline
-" Ranger
+""" Ranger
 let g:rnvimr_ex_enable = 1
-nmap <space>r :RnvimrToggle<CR>
-" Nvim-R
+noremap <Leader>r :RnvimrToggle<CR>
+""" Nvim-R
 let R_assign = 0
 let R_console_width=1000 " used so the R console is split horizontally
 let g:rout_follow_colorscheme = 1
@@ -33,12 +35,12 @@ let g:Rout_more_colors = 1
 """"""Keybindings
 let g:mapleader = "\<Space>"
 " Tabs
-map <Leader>1 1gt
-map <Leader>2 2gt
-map <Leader>3 3gt
-map <Leader>4 4gt
-map <Leader>5 5gt
-map <Leader>6 6gt
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
 nnoremap H gT
 nnoremap L gt
 "this clears, redraws screen, and mutes search highlighting until new or repeated search command
@@ -48,7 +50,7 @@ nnoremap <M-j>    :resize -2<CR>
 nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
-" TAB in normal mode will move to text buffer
+" TAB in normal mode will move to next buffer
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 " Better tabbing
@@ -57,6 +59,11 @@ vnoremap > >gv
 " Make cursor move as expected with wrapped lines:
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+" No Dijkstra
+inoremap jk <Esc>
+inoremap <Esc> <nop>
+nnoremap <Leader>ev :vsp $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 " Terminal Mode in NeoVim
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
@@ -88,6 +95,8 @@ endif
 
 """"""Settings
 colorscheme gruvbox
+" colorscheme desert
+set background=dark
 syntax on
 filetype plugin on
 scriptencoding utf-8
@@ -95,6 +104,7 @@ scriptencoding utf-8
 " set cursorline
 " set cursorcolumn
 " set tabstop=4  " show existing tab with 4 spaces width
+set colorcolumn=80  " PEP8
 set splitbelow " Horizontal splits will automatically be below
 set splitright " Vertical splits will automatically be to the right
 set bs=2
