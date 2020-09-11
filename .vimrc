@@ -4,12 +4,12 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot' " Better Syntax Support
 Plug 'vim-airline/vim-airline'
-Plug 'francoiscabrol/ranger.vim'
-Plug 'liuchengxu/vim-which-key'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jpalardy/vim-slime'  " send to REPL
 Plug 'tpope/vim-fugitive'  " git
 Plug 'morhetz/gruvbox'  " colorscheme
+" Plug 'liuchengxu/vim-which-key'
+" Plug 'francoiscabrol/ranger.vim'
 " Plug 'scrooloose/NERDTree'
 " Plug 'https://github.com/jalvesaq/Nvim-R'
 " Plug 'jiangmiao/auto-pairs' " Auto pairs for '(' '[' '{'
@@ -34,6 +34,13 @@ let g:Rout_more_colors = 1
 
 """"""Keybindings
 let g:mapleader = "\<Space>"
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3  " open files in a new tab
+let g:netrw_winsize = 20  " 20% of the page
+let g:netrw_preview = 1  " split previews to the right
+
 " Tabs
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
@@ -117,7 +124,7 @@ set showcmd "" Show (partial) command in status line.
 set foldmethod=marker
 set rnu  " relative numbering
 set number " the combination of number, rnu means the current line is not 0
-set mouse=a
+" set mouse=a
 set shiftwidth=4 " when indentifying with '>', use 4 space width
 set softtabstop=4
 set smarttab " spaces over tab chars, messes me up in Sublimetext
