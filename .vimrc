@@ -70,6 +70,7 @@ inoremap <Up> <C-o>gk
 inoremap jk <Esc>
 inoremap <Esc> <nop>
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 " Terminal Mode in NeoVim
 if has('nvim')
@@ -104,13 +105,14 @@ endif
 colorscheme gruvbox
 " colorscheme desert
 set background=dark
+filetype plugin indent on
 syntax on
-filetype plugin on
 scriptencoding utf-8
 
 " set cursorline
 " set cursorcolumn
 " set tabstop=4  " show existing tab with 4 spaces width
+set noswapfile
 set colorcolumn=80  " PEP8
 set splitbelow " Horizontal splits will automatically be below
 set splitright " Vertical splits will automatically be to the right
