@@ -1,4 +1,4 @@
-"""""""Pugins
+""""""Pugins --- {{{
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -8,36 +8,28 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jpalardy/vim-slime'  " send to REPL
 Plug 'tpope/vim-fugitive'  " git
 Plug 'morhetz/gruvbox'  " colorscheme
-" Plug 'liuchengxu/vim-which-key'
-" Plug 'francoiscabrol/ranger.vim'
-" Plug 'scrooloose/NERDTree'
 " Plug 'https://github.com/jalvesaq/Nvim-R'
-" Plug 'jiangmiao/auto-pairs' " Auto pairs for '(' '[' '{'
-" Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-" Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 source $HOME/.config/nvim/plug-config/coc.vim
 """ Slime
-let g:slime_target = "tmux"
+let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 """ Airline
 let g:airline#extensions#tabline#enabled = 1
 set noshowmode  " -- INSERT -- is redundant with airline
-""" Ranger
-let g:rnvimr_ex_enable = 1
-noremap <Leader>r :RnvimrToggle<CR>
 """ Nvim-R
-let R_assign = 0
-let R_console_width=1000 " used so the R console is split horizontally
-let g:rout_follow_colorscheme = 1
-let g:Rout_more_colors = 1
+" let R_assign = 0
+" let R_console_width=1000 " used so the R console is split horizontally
+" let g:rout_follow_colorscheme = 1
+" let g:Rout_more_colors = 1
+" }}}
 
-""""""Keybindings
+""""""Keybindings {{{
 let g:mapleader = "\<Space>"
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 3  " open files in a new tab
+let g:netrw_browse_split = 4  " open files in prev window
 let g:netrw_winsize = 20  " 20% of the page
 let g:netrw_preview = 1  " split previews to the right
 
@@ -48,8 +40,8 @@ nnoremap <Leader>3 3gt
 nnoremap <Leader>4 4gt
 nnoremap <Leader>5 5gt
 nnoremap <Leader>6 6gt
-nnoremap H gT
-nnoremap L gt
+" nnoremap H gT
+" nnoremap L gt
 "this clears, redraws screen, and mutes search highlighting until new or repeated search command
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " Use alt + hjkl to resize windows. M- and A- are equivalent
@@ -58,8 +50,8 @@ nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
 " TAB in normal mode will move to next buffer
-nnoremap <TAB> :bnext<CR>
-nnoremap <S-TAB> :bprevious<CR>
+" nnoremap <TAB> :bnext<CR>
+" nnoremap <S-TAB> :bprevious<CR>
 " Better tabbing
 vnoremap < <gv
 vnoremap > >gv
@@ -100,8 +92,9 @@ if has('nvim')
   " Paste
   tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 endif
+" }}}
 
-""""""Settings
+""""""Settings {{{
 colorscheme gruvbox
 " colorscheme desert
 set background=dark
@@ -112,6 +105,7 @@ scriptencoding utf-8
 " set cursorline
 " set cursorcolumn
 " set tabstop=4  " show existing tab with 4 spaces width
+set foldlevelstart=0  " start editing with all folds closed
 set noswapfile
 set colorcolumn=80  " PEP8
 set splitbelow " Horizontal splits will automatically be below
@@ -124,7 +118,7 @@ set wildmode=longest,list
 set nocompatible "" Necesary in vim, the default in nvim
 set showcmd "" Show (partial) command in status line.
 set foldmethod=marker
-set rnu  " relative numbering
+set relativenumber  " relative numbering
 set number " the combination of number, rnu means the current line is not 0
 " set mouse=a
 set shiftwidth=4 " when indentifying with '>', use 4 space width
@@ -142,4 +136,19 @@ set ignorecase          " Do case insensitive matching
 set smartcase           " Do smart case matching
 set incsearch           " Incremental search
 set hidden              " Hide buffers when they are abandoned
+" }}}
 
+""""""Filetype {{{
+augroup filetype_python
+    autocmd!
+    autocmd FileType python :iabbrev <buffer> iff if:<left>
+    autocmd Filetype python :iabbrev <buffer> deff def:<left>
+    autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+augroup END
+
+augroup filetype_vim
+    " clears group before combining to avoid duplication
+    autocmd!
+    autocmd Filetype vim setlocal foldmethod=marker
+augroup END
+" }}}
