@@ -1,31 +1,39 @@
+" Map leader first
+let g:mapleader = ' '
+
 """"""Pugins --- {{{
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+    " <C-c> to quit fzf
+    autocmd! FileType fzf
+    autocmd  FileType fzf set noshowmode noruler nonu
+    nnoremap <silent> <Leader><Leader> :Files<CR>
+    nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+    nnoremap <silent> <Leader>L        :Lines<CR>
+    nnoremap <silent> <Leader>`        :Marks<CR>
 Plug 'sheerun/vim-polyglot' " Better Syntax Support
 Plug 'vim-airline/vim-airline'
+    let g:airline#extensions#tabline#enabled = 1
+    set noshowmode  " -- INSERT -- is redundant with airline
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jpalardy/vim-slime'  " send to REPL
+    let g:slime_target = "neovim"
+    let g:slime_python_ipython = 1
 Plug 'tpope/vim-fugitive'  " git
+    nnoremap <Leader>g :Gstatus<CR>gg<c-n>
+    nnoremap <Leader>d :Gdiff<CR>
 Plug 'morhetz/gruvbox'  " colorscheme
 " Plug 'https://github.com/jalvesaq/Nvim-R'
+"     let R_assign = 0
+"     let R_console_width=1000 " used so the R console is split horizontally
+"     let g:rout_follow_colorscheme = 1
+"     let g:Rout_more_colors = 1
 call plug#end()
 source $HOME/.config/nvim/plug-config/coc.vim
-""" Slime
-let g:slime_target = "neovim"
-let g:slime_python_ipython = 1
-""" Airline
-let g:airline#extensions#tabline#enabled = 1
-set noshowmode  " -- INSERT -- is redundant with airline
-""" Nvim-R
-" let R_assign = 0
-" let R_console_width=1000 " used so the R console is split horizontally
-" let g:rout_follow_colorscheme = 1
-" let g:Rout_more_colors = 1
 " }}}
 
 """"""Keybindings {{{
-let g:mapleader = "\<Space>"
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -50,8 +58,12 @@ nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
 " TAB in normal mode will move to next buffer
-" nnoremap <TAB> :bnext<CR>
-" nnoremap <S-TAB> :bprevious<CR>
+nnoremap ]b :bnext<cr>
+nnoremap [b :bprev<cr>
+nnoremap ]t :tabn<cr>
+nnoremap [t :tabp<cr>
+nnoremap <tab>   <c-w>w
+nnoremap <S-tab> <c-w>W
 " Better tabbing
 vnoremap < <gv
 vnoremap > >gv
@@ -101,6 +113,7 @@ set background=dark
 filetype plugin indent on
 syntax on
 scriptencoding utf-8
+hi! TermCursorNC ctermfg=15 guifg=#fdf6e3 ctermbg=14 guibg=#93a1a1 cterm=NONE gui=NONE
 
 " set cursorline
 " set cursorcolumn
@@ -139,6 +152,9 @@ set hidden              " Hide buffers when they are abandoned
 " }}}
 
 """"""Filetype {{{
+
+" augroup and autocmd! is a partial solution to duplicate autocmds
+
 augroup filetype_python
     autocmd!
     autocmd FileType python :iabbrev <buffer> iff if:<left>
