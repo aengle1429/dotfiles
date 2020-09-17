@@ -50,7 +50,7 @@ nnoremap <Leader>5 5gt
 nnoremap <Leader>6 6gt
 " nnoremap H gT
 " nnoremap L gt
-"this clears, redraws screen, and mutes search highlighting until new or repeated search command
+" this clears, redraws screen, and mutes search highlighting until new or repeated search command
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " Use alt + hjkl to resize windows. M- and A- are equivalent
 nnoremap <M-j>    :resize -2<CR>
