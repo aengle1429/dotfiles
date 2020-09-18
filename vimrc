@@ -78,37 +78,36 @@ nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 " Terminal Mode in NeoVim
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <M-[> <Esc>
-  tnoremap <C-v><Esc> <Esc>
-  " Terminal mode:
-  tnoremap <C-h> <C-\><C-n><C-w>h
-  tnoremap <C-j> <C-\><C-n><C-w>j
-  tnoremap <C-k> <C-\><C-n><C-w>k
-  tnoremap <C-l> <C-\><C-n><C-w>l
-  " Insert mode:
-  inoremap <C-h> <Esc><C-w>h
-  inoremap <C-j> <Esc><C-w>j
-  inoremap <C-k> <Esc><C-w>k
-  inoremap <C-l> <Esc><C-w>l
-  " Visual mode:
-  vnoremap <C-h> <Esc><C-w>h
-  vnoremap <C-j> <Esc><C-w>j
-  vnoremap <C-k> <Esc><C-w>k
-  vnoremap <C-l> <Esc><C-w>l
-  " Normal mode:
-  nnoremap <C-h> <C-w>h
-  nnoremap <C-j> <C-w>j
-  nnoremap <C-k> <C-w>k
-  nnoremap <C-l> <C-w>l
-  " Paste
-  tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+    " Terminal mode:
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
+    " Insert mode:
+    inoremap <C-h> <Esc><C-w>h
+    inoremap <C-j> <Esc><C-w>j
+    inoremap <C-k> <Esc><C-w>k
+    inoremap <C-l> <Esc><C-w>l
+    " Visual mode:
+    vnoremap <C-h> <Esc><C-w>h
+    vnoremap <C-j> <Esc><C-w>j
+    vnoremap <C-k> <Esc><C-w>k
+    vnoremap <C-l> <Esc><C-w>l
+    " Normal mode:
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+    " Paste
+    tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 endif
 " }}}
 
 """"""Settings {{{
 colorscheme gruvbox
-" colorscheme desert
 set background=dark
 filetype plugin indent on
 syntax on
@@ -147,13 +146,12 @@ set sidescrolloff=5           " keep at least 5 lines left/right
 set showmatch           " Show matching brackets.
 set ignorecase          " Do case insensitive matching
 set smartcase           " Do smart case matching
-set incsearch           " Incremental search
 set hidden              " Hide buffers when they are abandoned
 " }}}
 
 """"""Filetype {{{
 
-" augroup and autocmd! is a partial solution to duplicate autocmds
+" augroup and autocmd! offers a partial solution to duplicate autocmds
 
 augroup filetype_python
     autocmd!
@@ -163,7 +161,6 @@ augroup filetype_python
 augroup END
 
 augroup filetype_vim
-    " clears group before combining to avoid duplication
     autocmd!
     autocmd Filetype vim setlocal foldmethod=marker
 augroup END
