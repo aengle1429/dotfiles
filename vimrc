@@ -104,6 +104,26 @@ if has('nvim')
     " Paste
     tnoremap <expr> <A-r> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 endif
+
+function! ToggleSignColumn()
+   " :h expression-syntax
+   " :h helpgrep
+   if !exists("b:signcolumn") || b:signcolumn == 1
+      let b:signcolumn=0
+      set signcolumn=no
+   else
+      let b:signcolumn=1
+      set signcolumn=yes
+   endif
+endfunction
+
+function! ToggleCopyPaste()
+    call ToggleSignColumn()
+    set relativenumber!
+    set nonumber!
+endfunction
+
+nnoremap <Leader>2 :call ToggleCopyPaste()<CR>
 " }}}
 
 """"""Settings {{{
