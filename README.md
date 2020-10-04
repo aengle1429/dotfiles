@@ -1,3 +1,3 @@
-# productivity
+# Dotfiles for Cloning into Machines
 
-My dot files and notes
+After cloning the repo, use the makefile. For example, `make nvim`.
