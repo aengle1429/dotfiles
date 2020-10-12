@@ -115,12 +115,15 @@ function! ToggleSignColumn()
 endfunction
 
 function! ToggleCopyPaste()
+    " Called copy paste because I usually turn these numberings off
+    " whenever I want to copy paste :-)
     call ToggleSignColumn()
     set relativenumber!
     set nonumber!
 endfunction
 
 nnoremap <Leader>2 :call ToggleCopyPaste()<CR>
+nnoremap <silent> <Leader>r :set relativenumber!<CR>
 " }}}
 
 """"""Settings {{{
