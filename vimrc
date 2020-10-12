@@ -57,13 +57,10 @@ nnoremap <M-j>    :resize -2<CR>
 nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>    :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
-" TAB in normal mode will move to next buffer
 nnoremap ]b :bnext<cr>
 nnoremap [b :bprev<cr>
 nnoremap ]t :tabn<cr>
 nnoremap [t :tabp<cr>
-nnoremap <tab>   <c-w>w
-nnoremap <S-tab> <c-w>W
 " Better tabbing
 vnoremap < <gv
 vnoremap > >gv
