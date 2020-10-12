@@ -23,6 +23,7 @@ Plug 'jpalardy/vim-slime'  " send to REPL
 Plug 'tpope/vim-fugitive'  " git
     nnoremap <Leader>g :Gstatus<CR>gg<c-n>
     nnoremap <Leader>d :Gdiff<CR>
+Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'  " colorscheme
 " Plug 'https://github.com/jalvesaq/Nvim-R'
 "     let R_assign = 0
