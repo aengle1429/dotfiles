@@ -135,6 +135,10 @@ syntax on
 scriptencoding utf-8
 hi! TermCursorNC ctermfg=15 guifg=#fdf6e3 ctermbg=14 guibg=#93a1a1 cterm=NONE gui=NONE
 
+if !has('nvim')
+    set gfn=Monaco:h16
+endif
+
 " set cursorline
 " set cursorcolumn
 " set tabstop=4  " show existing tab with 4 spaces width
