@@ -12,3 +12,4 @@ zle -N edit-command-line
 # vicmd  vi emulation - command mode
 # -M vicmd... vicmd is the keymap name that is selected for any operations by the current command.
 bindkey -M vicmd v edit-command-line
+setopt rm_star_silent

@@ -1,0 +1,18 @@
+# git config --global color.ui auto
+[user]
+  name = Firstname Lastname
+  email = email@address.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+  pager = true
+[color "status"]
+  added = green
+  changed = red bold
+  untracked = magenta bold
+
+[color "branch"]
+  remote = yellow
