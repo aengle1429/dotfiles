@@ -1,4 +1,5 @@
-# set -o vi
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
 
 # https://stackoverflow.com/questions/30840651/what-does-autoload-do-in-zsh 
@@ -13,3 +14,4 @@ zle -N edit-command-line
 # -M vicmd... vicmd is the keymap name that is selected for any operations by the current command.
 bindkey -M vicmd v edit-command-line
 setopt rm_star_silent
+# set -o vi  # for bash

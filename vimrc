@@ -2,7 +2,7 @@
 let g:mapleader = ' '
 
 """"""Pugins --- {{{
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
     " <C-c> to quit fzf
@@ -111,7 +111,7 @@ function! ToggleSignColumn()
       set signcolumn=no
    else
       let b:signcolumn=1
-      set signcolumn=yes
+      set signcolumn=auto
    endif
 endfunction
 
