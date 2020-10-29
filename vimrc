@@ -142,36 +142,36 @@ endif
 " set cursorline
 " set cursorcolumn
 " set tabstop=4  " show existing tab with 4 spaces width
-set foldlevelstart=0  " start editing with all folds closed
+" set mouse=a
 set noswapfile
-set colorcolumn=80  " PEP8
-set splitbelow " Horizontal splits will automatically be below
-set splitright " Vertical splits will automatically be to the right
 set bs=2
-set showtabline=2 "Always show vim tabs
-set history=200 " set vim to record last 200 ex commands
 set encoding=utf-8
 set wildmode=longest,list
-set nocompatible "" Necesary in vim, the default in nvim
-set showcmd "" Show (partial) command in status line.
 set foldmethod=marker
-set relativenumber  " relative numbering
-set number " the combination of number, rnu means the current line is not 0
-" set mouse=a
-set shiftwidth=4 " when indentifying with '>', use 4 space width
+set foldlevelstart=0       " start editing with all folds closed
+set colorcolumn=80         " PEP8
+set splitbelow             " Horizontal splits will automatically be below
+set splitright             " Vertical splits will automatically be to the right
+set showtabline=2          " Always show vim tabs
+set history=200            " set vim to record last 200 ex commands
+set nocompatible           " Necesary in vim, the default in nvim
+set showcmd                " Show (partial) command in status line.
+set relativenumber         " relative numbering
+set number                 " the combination of number, rnu means the current line is not 0
+set shiftwidth=4           " when indentifying with '>', use 4 space width
 set softtabstop=4
-set smarttab " spaces over tab chars, messes me up in Sublimetext
-set expandtab " on pressing tab, insert 4 spaces
-set incsearch " Jump to matched search
-set hlsearch " highlight search, see above for command to erase the highlighting afterwards
-set ruler                     " show the line number on the bar
-set noerrorbells              " No error bells
-set scrolloff=5               " keep at least 5 lines above/below
-set sidescrolloff=5           " keep at least 5 lines left/right
-set showmatch           " Show matching brackets.
-set ignorecase          " Do case insensitive matching
-set smartcase           " Do smart case matching
-set hidden              " Hide buffers when they are abandoned
+set smarttab               " spaces over tab chars, messes me up in Sublimetext
+set expandtab              " on pressing tab, insert 4 spaces
+set incsearch              " Jump to matched search
+set hlsearch               " highlight search, see above for command to erase the highlighting afterwards
+set ruler                  " show the line number on the bar
+set noerrorbells           " No error bells
+set scrolloff=5            " keep at least 5 lines above/below
+set sidescrolloff=5        " keep at least 5 lines left/right
+set showmatch              " Show matching brackets.
+set ignorecase             " Do case insensitive matching
+set smartcase              " Do smart case matching
+set hidden                 " Hide buffers when they are abandoned
 " }}}
 
 """"""Filetype {{{
