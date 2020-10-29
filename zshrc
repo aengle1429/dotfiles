@@ -16,4 +16,27 @@ bindkey -M vicmd v edit-command-line
 setopt rm_star_silent
 # set -o vi  # for bash, bindkey -v must precede history-incremental-search-backward
 # if not using fzf, rely on
-bindkey "-R" history-incremental-pattern-search-backward  # or history-incremental-search-backward
+# bindkey "-R" history-incremental-pattern-search-backward  # or history-incremental-search-backward
+# Remove mode switching delay.
+KEYTIMEOUT=5
+
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+
+precmd_functions+=(_fix_cursor)
