@@ -149,7 +149,6 @@ set encoding=utf-8
 set wildmode=longest,list
 set foldmethod=marker
 set foldlevelstart=0       " start editing with all folds closed
-set colorcolumn=80         " PEP8
 set splitbelow             " Horizontal splits will automatically be below
 set splitright             " Vertical splits will automatically be to the right
 set showtabline=2          " Always show vim tabs
@@ -183,6 +182,7 @@ augroup filetype_python
     autocmd FileType python :iabbrev <buffer> iff if:<left>
     autocmd Filetype python :iabbrev <buffer> deff def:<left>
     autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+    autocmd FileType python set colorcolumn=80
 augroup END
 
 augroup filetype_vim

@@ -14,4 +14,6 @@ zle -N edit-command-line
 # -M vicmd... vicmd is the keymap name that is selected for any operations by the current command.
 bindkey -M vicmd v edit-command-line
 setopt rm_star_silent
-# set -o vi  # for bash
+# set -o vi  # for bash, bindkey -v must precede history-incremental-search-backward
+# if not using fzf, rely on
+bindkey "-R" history-incremental-pattern-search-backward  # or history-incremental-search-backward
