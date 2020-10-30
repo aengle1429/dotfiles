@@ -1,3 +1,4 @@
+unsetopt BEEP  # turn off this awful noise
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
