@@ -43,14 +43,6 @@ let g:netrw_winsize = 20  " 20% of the page
 let g:netrw_preview = 1  " split previews to the right
 
 " Tabs
-nnoremap <Leader>1 1gt
-nnoremap <Leader>2 2gt
-nnoremap <Leader>3 3gt
-nnoremap <Leader>4 4gt
-nnoremap <Leader>5 5gt
-nnoremap <Leader>6 6gt
-" nnoremap H gT
-" nnoremap L gt
 " this clears, redraws screen, and mutes search highlighting until new or repeated search command
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " Use alt + hjkl to resize windows. M- and A- are equivalent
@@ -73,6 +65,8 @@ inoremap jk <Esc>
 inoremap <Esc> <nop>
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>eb :vsp ~/.bashrc<CR>
+nnoremap <leader>et :vsp ~/.tmux.conf<CR>
 nnoremap <Leader>sv :source $MYVIMRC<CR>
 " Terminal Mode in NeoVim
 if has('nvim')
