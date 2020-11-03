@@ -29,7 +29,7 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 # set -o vi  # for bash, bindkey -v must precede history-incremental-search-backward
 # if not using fzf, rely on
-# bindkey "-R" history-incremental-pattern-search-backward  # or history-incremental-search-backward
+# bindkey "-R" history-incremental-pattern-search-backward  # or history-incremental-search-backward, OR "^R"
 # Remove mode switching delay.
 KEYTIMEOUT=5
 
