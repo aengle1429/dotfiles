@@ -60,8 +60,12 @@ vnoremap > >gv
 " Make cursor move as expected with wrapped lines:
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
-" No Dijkstra
+" <C-o> is used to issue normal mode command without leaving insert
+inoremap <C-e> <C-o>A
+inoremap <C-a> <C-o>I
+" No Dijkstra, spacemacs accord
 inoremap jk <Esc>
+inoremap fd <Esc>
 inoremap <Esc> <nop>
 nnoremap <Leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
