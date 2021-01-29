@@ -84,3 +84,7 @@ precmd () { __git_ps1 "%n" ":%~$ " "|%s" }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+export PATH="$PATH:$HOME/.local/bin"
+export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin
